@@ -29,8 +29,8 @@ function Hero() {
     <div className="hero">
   <div className="hero-content text-center">
     <div className="max-w-md">
-      <h1 className="text-5xl font-bold">Find what you're playing next. 🎮</h1>
-      <p className="py-6">I'm feeling...</p>
+      <h1 className="text-5xl font-bold">Find what you&#39;re playing next. 🎮</h1>
+      <p className="py-6">I&#39;m feeling...</p>
     </div>
   </div>
 </div>
