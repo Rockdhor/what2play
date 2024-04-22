@@ -218,7 +218,7 @@ export default function Home() {
     <div className="flex justify-center flex-col">
       <Header/>
       <Hero/>
-      <Options modal={search}/>
+      <Options onClick={search}/>
       <Modal results={results} index={index} setIndex={setIndex}/>
     </div>
   );
