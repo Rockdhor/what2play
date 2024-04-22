@@ -94,35 +94,34 @@ function Modal({results, index, setIndex}:{results:any,index:any,setIndex:any}){
   return(
   <dialog id="my_modal" className="modal">
         {
-          results.length == 0 ? "loading"
-          :
           <div className="modal-box max-w-none w-1/10 md:w-2/4">
           <div className="w-64 md:w-full rounded-box">
             <div className="w-full flex flex-col">
-            <div className="navbar place-self-auto flex flex-wrap justify-between">
-  <div className="">
-    <a style={{wordBreak : 'break-word'}} target="_blank" href={"https://www.google.com/search?q="+results[index].title} className="btn btn-ghost text-xl text-balance">{results[index].title}</a>
-  </div>
-  <div className="flex flex-wrap">
-    {
-      results[index].genres.map((g:string)=> {
-        return <div className="badge badge-primary" key={g}>{g}</div>
-      })
-    }
-  </div>
-</div>
-            <h1 className="text-lg md:text-4xl pb-1"></h1>
-              <img src={results[index].image} className="w-full max-h-90" alt="Tailwind CSS Carousel component" />
-              <div className='flex flex-wrap justify-around py-4'>
-              {
-      results[index].tags.map((t:string)=> {
-        return <div className="badge badge-primary mb-2" key={t}>{t}</div>
-      })
-    }
-              </div>
-              <div className="flex justify-between">
-                <button onClick={() =>click(-1)} className="btn btn-secondary">⬅️ Previous</button><button onClick={() =>click(1)} className="btn btn-secondary">Next ➡️</button>
-              </div>
+              {results.length == 0 ? <span className="loading loading-dots loading-lg"></span> : 
+               <div><div className="navbar place-self-auto flex flex-wrap justify-between">
+               <div className="">
+                 <a style={{wordBreak : 'break-word'}} target="_blank" href={"https://www.google.com/search?q="+results[index].title} className="btn btn-ghost text-xl text-balance">{results[index].title}</a>
+               </div>
+               <div className="flex flex-wrap">
+                 {
+                   results[index].genres.map((g:string)=> {
+                     return <div className="badge badge-primary" key={g}>{g}</div>
+                   })
+                 }
+               </div>
+             </div>
+                         <h1 className="text-lg md:text-4xl pb-1"></h1>
+                           <img src={results[index].image} className="w-full max-h-90" alt="Tailwind CSS Carousel component" />
+                           <div className='flex flex-wrap justify-around py-4'>
+                           {
+                   results[index].tags.map((t:string)=> {
+                     return <div className="badge badge-primary mb-2" key={t}>{t}</div>
+                   })
+                 }
+                           </div>
+                           <div className="flex justify-between">
+                             <button onClick={() =>click(-1)} className="btn btn-secondary">⬅️ Previous</button><button onClick={() =>click(1)} className="btn btn-secondary">Next ➡️</button>
+                           </div></div>}
               </div> 
           </div>
         </div>
