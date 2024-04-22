@@ -36,7 +36,7 @@ function Hero() {
 </div>
   )
 }
-function Option({genre, modal}) {
+function Option({genre, modal}: {genre:any, modal:any}) {
   
   return (
       
@@ -49,7 +49,7 @@ function Option({genre, modal}) {
     
   )
   }
-function Options(modal: Function){
+function Options(modal: any){
     let genreList = [
       { id: 4, genre: 'Action', feeling: '💥 Thrill-Seeking' },
       { id: 51, genre: 'Indie', feeling: '🦴 Unique' },
@@ -81,7 +81,7 @@ function Options(modal: Function){
   )
 }
 
-function Modal({results, index, setIndex}){
+function Modal({results, index, setIndex}:{results:any,index:any,setIndex:any}){
   function click(c: number) {
     c = index + c
     
@@ -197,16 +197,17 @@ export default function Home() {
         return response.json();
       })
       .then(data => {
-        data = data["results"].slice(0,20).map(i => 
+        data = data["results"].slice(0,20).map((i: { name: any; background_image: any; genres: any[]; tags: any[]; }) => 
           ({
             "title":i.name,
             "image":i.background_image,
-            "genres":i.genres.map((g)=>g.name),
-            "tags":i.tags.filter((t)=>t.language=="eng").splice(0,8).map((t)=>t.name.charAt(0).toUpperCase() + t.name.slice(1))
+            "genres":i.genres.map((g: { name: any; })=>g.name),
+            "tags":i.tags.filter((t: { language: string; })=>t.language=="eng").splice(0,8).map((t: { name: string; })=>t.name.charAt(0).toUpperCase() + t.name.slice(1))
         })
         )
         setResults(data)
-        document.getElementById('my_modal').showModal()
+        let modal:any = document.getElementById('my_modal')
+        modal!.showModal()
       })
       .catch(error => {
         console.error('Error:', error);
@@ -217,7 +218,7 @@ export default function Home() {
     <div className="flex justify-center flex-col">
       <Header/>
       <Hero/>
-      <Options onClick={search}/>
+      <Options modal={search}/>
       <Modal results={results} index={index} setIndex={setIndex}/>
     </div>
   );
