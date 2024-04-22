@@ -93,11 +93,10 @@ function Modal({results, index, setIndex}:{results:any,index:any,setIndex:any}){
   }
   return(
   <dialog id="my_modal" className="modal">
-        {
+        {results.length == 0 ? <span className="loading loading-dots loading-lg"></span> :
           <div className="modal-box max-w-none w-1/10 md:w-2/4">
           <div className="w-64 md:w-full rounded-box">
             <div className="w-full flex flex-col">
-              {results.length == 0 ? <span className="loading loading-dots loading-lg"></span> : 
                <div><div className="navbar place-self-auto flex flex-wrap justify-between">
                <div className="">
                  <a style={{wordBreak : 'break-word'}} target="_blank" href={"https://www.google.com/search?q="+results[index].title} className="btn btn-ghost text-xl text-balance">{results[index].title}</a>
@@ -121,7 +120,7 @@ function Modal({results, index, setIndex}:{results:any,index:any,setIndex:any}){
                            </div>
                            <div className="flex justify-between">
                              <button onClick={() =>click(-1)} className="btn btn-secondary">⬅️ Previous</button><button onClick={() =>click(1)} className="btn btn-secondary">Next ➡️</button>
-                           </div></div>}
+                           </div></div>
               </div> 
           </div>
         </div>
