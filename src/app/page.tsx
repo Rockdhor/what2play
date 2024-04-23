@@ -5,7 +5,7 @@ function Header() {
   return(
     <div className="navbar bg-base-200 place-self-auto shadow-lg">
   <div className="flex-1">
-    <a className="btn btn-ghost text-xl">what2play</a>
+    <p className="btn btn-ghost text-xl">what2play</p>
   </div>
   <div className="flex-none">
   <label className="swap swap-rotate">
@@ -25,11 +25,37 @@ function Header() {
   )
 }
 function Hero() {
+  const phrases = [
+    "Now with dark mode!",
+    "As seen on TV!",
+    "Awesome!",
+    "May contain nuts!",
+    "Limited edition!",
+    "More polygons!",
+    "It's here!",
+    "More than 500 sold!",
+    "Holy cow, man!",
+    "Oh man!",
+    "Fat free!",
+    "Ask your doctor!",
+    "Legal in Finland!"
+  ]
+  const [phrase, setPhrase] = useState(phrases[Math.floor(Math.random() * phrases.length)]);
+  const [isClient, setIsClient] = useState(false)
+ 
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
   return (
     <div className="hero">
   <div className="hero-content text-center">
-    <div className="max-w-md">
-      <h1 className="text-5xl font-bold">Find what you&#39;re playing next. 🎮</h1>
+    <div className="max-w-md flex flex-col">
+      <h1 className="text-5xl font-bold">Find what you&#39;re playing next.</h1>
+      {isClient && <div className="minecraft text-primary w-content place-self-end">
+      {
+        phrase
+      } 🎮
+      </div>}
       <p className="py-6">I&#39;m feeling...</p>
     </div>
   </div>

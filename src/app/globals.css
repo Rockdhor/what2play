@@ -2,4 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+.minecraft {
+    transform: rotate(15deg);
+    position: absolute;
+    animation-name: minecraft-anim;
+    animation-duration: 1.5s;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+}
 
+@keyframes minecraft-anim {
+    from {scale: 1.2;}
+    to {scale: 1.5;}
+  }
